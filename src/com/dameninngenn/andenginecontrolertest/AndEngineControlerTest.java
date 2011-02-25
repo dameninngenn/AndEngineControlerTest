@@ -154,6 +154,7 @@ public class AndEngineControlerTest extends BaseGameActivity {
 		});
 		rotationOnScreenControl.getControlBase().setBlendFunction(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 		rotationOnScreenControl.getControlBase().setAlpha(0);
+		rotationOnScreenControl.getControlBase().setScale(0.5f);
 		rotationOnScreenControl.getControlKnob().setScale(0.8f);
 
 		velocityOnScreenControl.setChildScene(rotationOnScreenControl);
