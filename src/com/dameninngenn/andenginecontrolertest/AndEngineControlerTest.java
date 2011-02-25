@@ -22,8 +22,6 @@ import org.anddev.andengine.opengl.texture.TextureOptions;
 import org.anddev.andengine.opengl.texture.region.TextureRegion;
 import org.anddev.andengine.opengl.texture.region.TextureRegionFactory;
 import org.anddev.andengine.ui.activity.BaseGameActivity;
-import org.anddev.andengine.util.MathUtils;
-
 import android.widget.Toast;
 
 public class AndEngineControlerTest extends BaseGameActivity {
@@ -137,24 +135,20 @@ public class AndEngineControlerTest extends BaseGameActivity {
 		/* Rotation control (right). */
 		final int y2 = (this.mPlaceOnScreenControlsAtDifferentVerticalLocations) ? 0 : y1;
 		final int x2 = CAMERA_WIDTH - this.mOnScreenControlBaseTextureRegion.getWidth();
-		final AnalogOnScreenControl rotationOnScreenControl = new AnalogOnScreenControl(x2, y2, this.mCamera, this.mOnScreenControlBaseTextureRegion, this.mOnScreenControlKnobTextureRegion, 0.1f, new IAnalogOnScreenControlListener() {
+		final AnalogOnScreenControl rotationOnScreenControl = new AnalogOnScreenControl(x2, y2, this.mCamera, this.mOnScreenControlBaseTextureRegion, this.mOnScreenControlKnobTextureRegion, 0.1f, 5000, new IAnalogOnScreenControlListener() {
 			@Override
 			public void onControlChange(final BaseOnScreenControl pBaseOnScreenControl, final float pValueX, final float pValueY) {
-				if(pValueX == x1 && pValueY == x1) {
-					face.setRotation(x1);
-				} else {
-					face.setRotation(MathUtils.radToDeg((float)Math.atan2(pValueX, -pValueY)));
-				}
+				/* Nothing. */
 			}
 
 			@Override
 			public void onControlClick(final AnalogOnScreenControl pAnalogOnScreenControl) {
-				/* Nothing. */
+				face.setVelocity(0, -100);
 			}
 		});
 		rotationOnScreenControl.getControlBase().setBlendFunction(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 		rotationOnScreenControl.getControlBase().setAlpha(0);
-		rotationOnScreenControl.getControlBase().setScale(0.5f);
+		rotationOnScreenControl.getControlBase().setScale(0.2f);
 		rotationOnScreenControl.getControlKnob().setScale(0.8f);
 
 		velocityOnScreenControl.setChildScene(rotationOnScreenControl);
