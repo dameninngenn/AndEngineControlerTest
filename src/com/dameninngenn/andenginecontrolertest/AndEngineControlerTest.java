@@ -120,7 +120,7 @@ public class AndEngineControlerTest extends BaseGameActivity {
 		final DigitalOnScreenControl velocityOnScreenControl = new DigitalOnScreenControl(x1, y1, this.mCamera, this.mOnScreenControlBaseTextureRegion, this.mOnScreenControlKnobTextureRegion, 0.1f, new IOnScreenControlListener() {
 			@Override
 			public void onControlChange(final BaseOnScreenControl pBaseOnScreenControl, final float pValueX, final float pValueY) {
-				face.setVelocity(pValueX * 100, pValueY * 100);
+				face.setVelocity(pValueX * 100, 0);
 			}
 
 		});
